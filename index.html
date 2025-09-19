@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <title>8. AI Survey Challenges</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Metastanza barchart -->
+  <script type="module" src="https://togostanza.github.io/metastanza-devel/barchart.js" async></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+      padding: 24px;
+    }
+
+    h2 {
+      margin: 28px 0 12px;
+    }
+
+    .chart {
+      max-width: 1000px;
+      height: 600px;
+      /* X軸ラベル表示のため高さをさらに増加 */
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .note {
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .charts-container {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .chart-item {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .analysis {
+      margin-top: 24px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-left: 4px solid #007bff;
+      border-radius: 4px;
+    }
+
+    .analysis h3 {
+      margin-top: 0;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .analysis ul {
+      margin: 12px 0;
+      padding-left: 20px;
+    }
+
+    .analysis li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 0 0 0 8px;
+      padding: 10px 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 15px;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    body {
+      padding-top: 20px;
+    }
+
+    .question {
+      background-color: #ecf0f1;
+      padding: 15px 20px;
+      border-radius: 6px;
+      margin-bottom: 25px;
+      font-style: italic;
+      border-left: 4px solid #3498db;
+    }
+
+    togostanza-barchart {
+      --togostanza-canvas-width: 650;
+      --togostanza-canvas-height: 600;
+      --togostanza-canvas-padding: 20 20 200 100;
+    }
+
+    #chart-by-lang {
+      --togostanza-canvas-width: 650;
+      --togostanza-canvas-height: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="ai_failures.html">9. AI "failures" →</a>
+  </div>
+
+  <h1>8. AI Challenges</h1>
+  <div class="question">
+    <strong>Survey Question:</strong> "When using AI tools in your work, what challenges have you faced? (Select all
+    that apply)"
+  </div>
+
+  <div class="charts-container">
+    <div class="chart-item">
+      <h2>① Overall Total (All Languages)</h2>
+      <togostanza-barchart id="chart-all" class="chart" data-type="json" axis-x-key="answer" axis-x-placement="bottom"
+        axis-x-title="Answer" axis-x-title_padding="200" axis-x-ticks_label_angle="-45"
+        axis-x-ticks_label_font_size="11" axis-y-key="count" axis-y-placement="left" axis-y-title="Count"
+        axis-y-title_padding="40" width="800" height="700" chart-width="800" chart-height="700" tooltip-visible="true"
+        tooltip="&lt;div&gt;&lt;strong&gt;{{answer_full}}&lt;/strong&gt;&lt;br/&gt;Count: {{count}}&lt;/div&gt;"></togostanza-barchart>
+    </div>
+
+    <div class="chart-item">
+      <h2>② By Language (Grouped)</h2>
+      <togostanza-barchart id="chart-by-lang" class="chart" data-type="json" axis-x-key="answer"
+        axis-x-placement="bottom" axis-x-title="Answer" axis-x-title_padding="200" axis-x-ticks_label_angle="-45"
+        axis-x-ticks_label_font_size="11" axis-y-key="count" axis-y-placement="left" axis-y-title="Count"
+        axis-y-title_padding="40" group-key="lang" group-arrangement="grouped" width="800" height="700"
+        chart-width="800" chart-height="700" legend-visible legend-title="Lang" tooltip-visible="true"
+        tooltip="&lt;div&gt;&lt;strong&gt;{{answer_full}}&lt;/strong&gt;&lt;br/&gt;Count: {{count}}&lt;/div&gt;"></togostanza-barchart>
+    </div>
+  </div>
+
+  <div class="analysis">
+    <h3>Key Findings</h3>
+    <ul>
+      <li><strong>Common concerns across all regions:</strong> AI accuracy/reliability, over-reliance leading to
+        mistakes, and ethical/privacy issues are the top concerns globally, regardless of sample size differences.</li>
+      <li><strong>Regional patterns considering sample size:</strong>
+        <ul>
+          <li><strong>English-speaking regions:</strong> Highest absolute numbers but also likely highest AI adoption
+            rates, suggesting more experience with AI challenges.</li>
+          <li><strong>Japan:</strong> Notable focus on data limitations (size, quality, accessibility) - this may
+            reflect specific regulatory or cultural data handling concerns unique to Japan.</li>
+          <li><strong>Thailand:</strong> Lower absolute numbers but similar proportional patterns, indicating that while
+            sample size differs, the fundamental concerns are consistent across regions.</li>
+        </ul>
+      </li>
+      <li><strong>Proportional analysis:</strong> When considering relative response patterns rather than absolute
+        numbers, all three regions show similar priority rankings, suggesting universal AI adoption challenges.</li>
+      <li><strong>Low priority issues:</strong> User interface complexity and interpretability of AI suggestions are
+        minimal concerns across all regions, suggesting technical reliability rather than usability is the main barrier
+        regardless of cultural context.</li>
+    </ul>
+  </div>
+
+  <script>
+    // 形式: [{ answer: ["A","B"], lang: "English" }, ...]
+    async function main() {
+      const res = await fetch('./answers.json');
+      const rows = await res.json();
+
+      // ① 言語に関係なく合計（answer ごと）
+      // countsAll: Map<answer, number>
+      const countsAll = new Map();
+      for (const row of rows) {
+        const answers = Array.isArray(row.answer) ? row.answer : [];
+        for (const ans of answers) {
+          const key = String(ans).trim();
+          if (!key) continue;
+          countsAll.set(key, (countsAll.get(key) || 0) + 1);
+        }
+      }
+      // 表示用配列に変換
+      const dataAll = Array.from(countsAll.entries())
+        .map(([answer, count]) => ({
+          answer: answer.length > 50 ? answer.substring(0, 50) + '...' : answer,
+          answer_full: answer, // 完全なテキストをtooltip用に保存
+          count
+        }))
+        // 値が大きい順に並べ替え（必要なければ削除）
+        .sort((a, b) => b.count - a.count);
+
+      // ② 言語別 grouped（answer × lang）
+      // countsByLang: Map<answer, Map<lang, number>>
+      const countsByLang = new Map();
+      for (const row of rows) {
+        const lang = String(row.lang || '').trim() || 'Unknown';
+        const answers = Array.isArray(row.answer) ? row.answer : [];
+        for (const ans of answers) {
+          const a = String(ans).trim();
+          if (!a) continue;
+          if (!countsByLang.has(a)) countsByLang.set(a, new Map());
+          const inner = countsByLang.get(a);
+          inner.set(lang, (inner.get(lang) || 0) + 1);
+        }
+      }
+      // 表示用配列（metastanzaのbarchartは tidy 形式でOK）
+      // [{ answer, lang, count }, ...]
+      const dataByLang = [];
+      for (const [answer, langMap] of countsByLang.entries()) {
+        for (const [lang, count] of langMap.entries()) {
+          dataByLang.push({
+            answer: answer.length > 50 ? answer.substring(0, 50) + '...' : answer,
+            answer_full: answer, // 完全なテキストをtooltip用に保存
+            lang,
+            count
+          });
+        }
+      }
+      // 合計数の多い順に並べ替え（合計チャートと同じ順序）
+      // まず各answerの合計数を計算
+      const answerTotals = new Map();
+      for (const item of dataByLang) {
+        const currentTotal = answerTotals.get(item.answer) || 0;
+        answerTotals.set(item.answer, currentTotal + item.count);
+      }
+
+      // 合計数の多い順に並べ替え
+      dataByLang.sort((a, b) => {
+        const totalA = answerTotals.get(a.answer);
+        const totalB = answerTotals.get(b.answer);
+        if (totalA !== totalB) {
+          return totalB - totalA; // 合計数の多い順
+        }
+        // 合計数が同じ場合は、同じanswer内でcountの多い順
+        if (a.answer === b.answer) return b.count - a.count;
+        return a.answer.localeCompare(b.answer, 'en');
+      });
+
+      // Blob URL を作成して data-url に設定（ローカルでも動く）
+      function toBlobUrl(obj) {
+        const blob = new Blob([JSON.stringify(obj)], { type: 'application/json' });
+        return URL.createObjectURL(blob);
+      }
+
+      const urlAll = toBlobUrl(dataAll);
+      const urlByLang = toBlobUrl(dataByLang);
+
+      const chartAll = document.getElementById('chart-all');
+      const chartByLang = document.getElementById('chart-by-lang');
+
+      chartAll.setAttribute('data-url', urlAll);
+      chartByLang.setAttribute('data-url', urlByLang);
+
+      // 期待どおり描画されない場合、stanza読み込み（async）の完了後にも再設定
+      // （多くのケースでは不要。保険として遅延で再設定）
+      setTimeout(() => {
+        chartAll.setAttribute('data-url', urlAll);
+        chartByLang.setAttribute('data-url', urlByLang);
+      }, 500);
+    }
+
+    main().catch(err => {
+      console.error(err);
+      alert('answers.json の読み込みまたは描画でエラーが発生しました。コンソールをご確認ください。');
+    });
+  </script>
+</body>
+
+</html>
